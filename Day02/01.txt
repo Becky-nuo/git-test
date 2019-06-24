@@ -1,0 +1,44 @@
+
+git commit    #创建一个新的提交记录
+git commit --amend  #可以对上一次的提交进行修改，也可以修改提交说明
+
+git branch <新的分支名称>    #创建一个新的分支
+git branch -f <branch> HEAD~<num>  # 将branch分支强制指向HEAD的第<num>级父提交（-f,将分支强制移动到任意位置）
+
+git checkout <branch>  #指定分支
+git checkout <提交记录>   #分离HEAD(指向某个具体的提交记录而不是分支名)
+git checkout <branch>^   #寻找指定提交记录的父节点（HEAD^可做向上移动）
+git checkout HEAD~<num>  #指定向上移动多少次
+
+git merge <branch>    #将两个分支合并到一起（把两个父节点包含起来）
+
+git rebase <branch>   #合并分支2（提交记录依然处在，生成提交记录的副本。在另一个地方逐个放下来）
+git rebase -i HEAD~<num>  #按照指定的方式进行复制（在排序时可以删除某些提交）
+
+git reset HEAD~<num>/<branch>  #把分支记录回退几个提交记录来实现撤销改动(会改变记录)/将<branch>任意切换到新的提交记录上
+
+git revert HEAD   #在提交记录中不在修改，在后面提交新的提交
+
+git cherry-pick <提交记录1> <提交记录2>  #将<>与<>抓过来放在当前分支下
+
+git tag v1 <提交记录>   #将标签v1明确让它指向<>，如果不指定，git会让HEAD指定
+
+
+
+git clone   #在本地创建一个远程仓库（拷贝）
+
+git fetch       #从远程仓库下载到本地仓库
+git fetch origin <branch>      #下载远程仓库中<>分支中的最新提交记录，并更新了o/<>
+git fetch origin <branch>~1:<branch>     #<>~1解析成一个origin仓库的位置，然后将提交记录下载到本地的<>的分支上
+
+git pull          #本地仓库与远程仓库更新至一致
+git pull origin <branch>         #通过<>更新了o/<>，然后将o/<> merge到检出的位置
+git pull origin <branch>:<新分支名称>   #先在本地创建<新分支名称>的分支，从远程仓库中的<branch>分支中下载提交记录，并合并到<新分支名称>,然后在merge到检出的分支
+
+git push    #从本地仓库上传到远程仓库
+git push origin <branch>      #<branch>分支得到了更新
+git push origin <branch>^:<branch>   #<>^解析为一个位置，上传所有未被包含到远程仓库里<>分支中的提交记录
+git push origin <branch>:<新的分支>  #推送的目的分支不存在，可根据名称创建新的分支
+git push origin :<branch>      #如果push 传空值 source ，会删除远程仓库中的<>分支中
+git push origin ：<branch>     #如果fetch 传空值 source，会在本地创建一个新分支
+
