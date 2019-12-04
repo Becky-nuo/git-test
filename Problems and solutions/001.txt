@@ -1,0 +1,18 @@
+
+GitHub提交代码避免输入用户名和密码的方法：
+
+    到本地项目文件夹子，打开git bash 
+         1.查看clone 地址：
+            git remote -v
+ 
+        2.移除https的方式，换成 ssh方式
+            git remote rm origin
+
+        3.添加新的git方式：ssh方式，ssh方式地址的话，在github上，切换到ssh方式，然后复制地址。
+            git remote add origin git地址
+ 
+        4.查看push方式是否修改成功：
+            git remote -v
+ 
+        5.重新push（提交一下）
+            git push origin maste
