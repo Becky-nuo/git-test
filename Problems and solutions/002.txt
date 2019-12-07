@@ -1,0 +1,19 @@
+
+git push origin master：
+error: failed to push some refs to 'git@github.com:XXX/XXX.git
+
+方法：
+    进行push前先将远程仓库pull到本地仓库
+        $ git pull origin master    查看文件是否下载
+        #git pull --rebase origin master    代码合并
+        $ git push -u origin master    代码上传到GitHub
+
+    强制push本地仓库到远程:
+        $ git push -u origin master -f
+        (强制push后远程文件可能会丢失,不建议使用此方法)
+
+    避开解决冲突, 将本地文件暂时提交到远程新建的分支中:
+        $ git branch [name]
+        
+        创建完branch后, 再进行push:
+            $ git push -u origin [name]
